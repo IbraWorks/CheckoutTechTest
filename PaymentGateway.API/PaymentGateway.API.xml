@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PaymentGateway.API</name>
+    </assembly>
+    <members>
+        <member name="M:PaymentGateway.API.Controllers.WeatherForecastController.Get">
+            <summary>
+            Get the weather forecast for some places
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
