@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
+using PaymentGateway.Application;
 using PaymentGateway.Application.EventStructure;
 using PaymentGateway.Application.EventStructure.Payments;
 using PaymentGateway.Application.Models;
 using PaymentGateway.Application.Payments.Commands;
 using Xunit;
 
-namespace PaymentGateway.Application.Tests.Unit.Handlers
+namespace PaymentsGateway.Application.Tests.Unit.Handlers
 {
     public class CreatePaymentHandlerTests
     {
@@ -98,4 +100,5 @@ namespace PaymentGateway.Application.Tests.Unit.Handlers
             Assert.True(response.Error);
         }
     }
+
 }

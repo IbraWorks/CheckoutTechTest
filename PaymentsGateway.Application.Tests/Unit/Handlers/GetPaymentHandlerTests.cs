@@ -9,7 +9,7 @@ using PaymentGateway.Application.Models;
 using PaymentGateway.Application.Payments.Queries;
 using Xunit;
 
-namespace PaymentGateway.Application.Tests.Unit.Handlers
+namespace PaymentsGateway.Application.Tests.Unit.Handlers
 {
     public class GetPaymentHandlerTests
     {
@@ -22,7 +22,7 @@ namespace PaymentGateway.Application.Tests.Unit.Handlers
         public GetPaymentHandlerTests()
         {
             _mockEvents = new List<IEvent<Payment>>();
-             _mockEventStore = new Mock<IEventStore<Payment>>();
+            _mockEventStore = new Mock<IEventStore<Payment>>();
             _sut = new GetPaymentHandler(_mockEventStore.Object);
             _mockQuery = new GetPaymentQuery(Guid.Empty);
             _mockCancellationToken = new CancellationToken();
@@ -47,7 +47,7 @@ namespace PaymentGateway.Application.Tests.Unit.Handlers
                 .Setup(_ => _.GetEvent(It.IsAny<Guid>())).ReturnsAsync(_mockEvents);
             var response = await _sut.Handle(_mockQuery, _mockCancellationToken);
 
-            
+
         }
     }
 }

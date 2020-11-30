@@ -8,15 +8,16 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Moq.Protected;
+using PaymentGateway.Application;
 using Xunit;
 
-namespace PaymentGateway.Application.Tests.Unit
+namespace PaymentsGateway.Application.Tests
 {
-   
     public class AcquiringBankHttpClientTests
     {
-        private AcquiringBankHttpClient _sut;
 
+        private AcquiringBankHttpClient _sut;
+        private readonly Mock<ILogger<AcquiringBankHttpClient>> _mockLogger = new Mock<ILogger<AcquiringBankHttpClient>>();
 
 
         [Fact]
@@ -32,10 +33,10 @@ namespace PaymentGateway.Application.Tests.Unit
                     StatusCode = HttpStatusCode.Accepted,
                     Content = new StringContent("1", Encoding.UTF8, "application/json")
                 });
-            _sut = new AcquiringBankHttpClient(new HttpClient(httpHandlerMock.Object));
+            _sut = new AcquiringBankHttpClient(new HttpClient(httpHandlerMock.Object), _mockLogger.Object );
 
             var response = await _sut.Post<int>("http://test.com", null);
-            
+
             Assert.Equal(1, response.Data);
             Assert.Equal("Successfully sent payment to acquiring bank", response.Message);
             Assert.False(response.Error);
@@ -54,7 +55,7 @@ namespace PaymentGateway.Application.Tests.Unit
                     StatusCode = HttpStatusCode.InternalServerError,
                     Content = new StringContent("1", Encoding.UTF8, "application/json")
                 });
-            _sut = new AcquiringBankHttpClient(new HttpClient(httpHandlerMock.Object));
+            _sut = new AcquiringBankHttpClient(new HttpClient(httpHandlerMock.Object), _mockLogger.Object);
 
             var response = await _sut.Post<int>("http://test.com", null);
 
@@ -62,14 +63,11 @@ namespace PaymentGateway.Application.Tests.Unit
             Assert.Equal("InternalServerError", response.Message);
             Assert.True(response.Error);
         }
-
     }
-
-
 
     // think of a better way to test this.
 
-    class ReturnSuccessResponseHandler: HttpMessageHandler
+    class ReturnSuccessResponseHandler : HttpMessageHandler
     {
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {

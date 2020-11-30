@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Moq;
 using PaymentGateway.API.V1.Payments;
 using PaymentGateway.Application;
@@ -22,10 +23,13 @@ namespace PaymentGateway.API.Tests.Unit.Payments
     {
         private readonly Mock<IMediator> _mediator;
         private readonly PaymentsController _sut;
+        private readonly Mock<ILogger<PaymentsController>> _mockLogger;
+
         public PaymentControllerTests()
         {
+            _mockLogger = new Mock<ILogger<PaymentsController>>();
             _mediator = new Mock<IMediator>();
-            _sut = new PaymentsController(_mediator.Object);
+            _sut = new PaymentsController(_mediator.Object, _mockLogger.Object);
         }
 
 

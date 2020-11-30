@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using PaymentGateway.Application;
 using PaymentGateway.Application.Models;
 using PaymentGateway.Application.Payments.Commands;
@@ -17,10 +18,12 @@ namespace PaymentGateway.API.V1.Payments
     public class PaymentsController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly ILogger<PaymentsController> _logger;
 
-        public PaymentsController(IMediator mediator)
+        public PaymentsController(IMediator mediator, ILogger<PaymentsController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
         [HttpPost("{paymentId:guid}")]
@@ -32,9 +35,16 @@ namespace PaymentGateway.API.V1.Payments
 
             if (response.Error)
             {
+                _logger.Log(LogLevel.Information, $"payment {paymentId} failed");
+
                 return BadRequest(response.Message);
             }
+
+            _logger.Log(LogLevel.Information, $"payment {paymentId} successfully sent");
+
             return new CreatedResult($"/v1/payment/{paymentId}", response.Data);
+
+
         }
 
         [HttpGet("{paymentId:guid}")]
@@ -57,8 +67,7 @@ namespace PaymentGateway.API.V1.Payments
                 AcquiringBankPaymentId = payment.AcquiringBankPaymentId,
                 Currency = payment.Currency,
                 CardNumber = payment.HiddenCardNumber(),
-                Amount = payment.Amount,
-                Message = response.Message
+                Amount = payment.Amount
             });
         }
 

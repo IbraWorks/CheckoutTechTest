@@ -10,10 +10,12 @@ namespace PaymentGateway.Application
     public class AcquiringBankHttpClient : IAcquiringBankHttpClient
     {
         private readonly HttpClient _httpClient;
+        private readonly ILogger<AcquiringBankHttpClient> _logger;
 
-        public AcquiringBankHttpClient(HttpClient httpClient)
+        public AcquiringBankHttpClient(HttpClient httpClient, ILogger<AcquiringBankHttpClient> logger)
         {
             _httpClient = httpClient;
+            _logger = logger;
         }
 
  
@@ -30,9 +32,9 @@ namespace PaymentGateway.Application
             }
             catch (Exception e)
             {
+                _logger.LogCritical(e, "Unable to connect with Acquiring Bank Api");
 
-                // log error e.Message here, don't return it as a Response object
-                return Response.Failure<T>($"payment was not processed, {e.Message}");
+                return Response.Failure<T>("Error occurred, payment was not processed");
             }
         }
     }
