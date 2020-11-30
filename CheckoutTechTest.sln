@@ -7,7 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentGateway.API", "Payme
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockAcquiringBank.API", "MockAcquiringBank.API\MockAcquiringBank.API.csproj", "{8D4B87F3-78FD-46B9-81BA-8E90EC0EBCA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentGateway.API.Tests.Unit", "PaymentGateway.API.Tests.Unit\PaymentGateway.API.Tests.Unit.csproj", "{6BDB1A96-5304-4ACB-925C-03917011B6A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentGateway.Application", "PaymentGateway.Application\PaymentGateway.Application.csproj", "{AD1B8B25-1F14-42FC-9F07-E5BC5A17B141}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentGateway.Application.Tests", "PaymentGateway.Application.Tests\PaymentGateway.Application.Tests.csproj", "{16D3E592-A9AF-4CDE-BD78-1806C287DCF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentGateway.API.Tests", "PaymentGateway.API.Tests\PaymentGateway.API.Tests.csproj", "{6076415E-8590-47F3-85C9-0A4EB83F4E1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +27,18 @@ Global
 		{8D4B87F3-78FD-46B9-81BA-8E90EC0EBCA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D4B87F3-78FD-46B9-81BA-8E90EC0EBCA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D4B87F3-78FD-46B9-81BA-8E90EC0EBCA4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6BDB1A96-5304-4ACB-925C-03917011B6A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6BDB1A96-5304-4ACB-925C-03917011B6A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6BDB1A96-5304-4ACB-925C-03917011B6A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6BDB1A96-5304-4ACB-925C-03917011B6A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD1B8B25-1F14-42FC-9F07-E5BC5A17B141}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD1B8B25-1F14-42FC-9F07-E5BC5A17B141}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD1B8B25-1F14-42FC-9F07-E5BC5A17B141}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD1B8B25-1F14-42FC-9F07-E5BC5A17B141}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16D3E592-A9AF-4CDE-BD78-1806C287DCF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16D3E592-A9AF-4CDE-BD78-1806C287DCF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16D3E592-A9AF-4CDE-BD78-1806C287DCF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16D3E592-A9AF-4CDE-BD78-1806C287DCF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6076415E-8590-47F3-85C9-0A4EB83F4E1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6076415E-8590-47F3-85C9-0A4EB83F4E1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6076415E-8590-47F3-85C9-0A4EB83F4E1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6076415E-8590-47F3-85C9-0A4EB83F4E1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

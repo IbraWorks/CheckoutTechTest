@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace PaymentGateway.API.Tests.Unit
+namespace PaymentGateway.Application.Tests
 {
     public class UnitTest1
     {
