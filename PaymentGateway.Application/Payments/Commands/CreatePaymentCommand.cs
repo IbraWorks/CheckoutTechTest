@@ -60,8 +60,9 @@ namespace PaymentGateway.Application.Payments.Commands
                 return Response.Failure<Guid>($"Error, a payment with id {request.Id} already exists");
             }
 
-            // create the payment
-            // i don't like the fact that i need to create the payment object here, think of something else
+            // dont need to create the payment and process the events. we can get a payment by processing the events on the fly
+            // see GetPaymentHandler for details. For now just dispatch the necessary events.
+           
             var createPaymentEvent = new CreatePaymentEvent(DateTime.UtcNow, request.Id, request.CardNumber, request.Currency, request.Amount);
             await _eventDispatcher.DispatchEvent(createPaymentEvent);
 
@@ -90,9 +91,6 @@ namespace PaymentGateway.Application.Payments.Commands
                 await _eventDispatcher.DispatchEvent(new PaymentFailedEvent(DateTime.UtcNow, request.Id, response.Message));
                 return Response.Failure(response.Message, response.Data);
             }
-
-            ////return Task.FromResult(Response.Success(new Payment("A lot of money"), "Payment was a lot bro"));
-            //throw new Exception();
         }
 
         private async Task<bool> IsPaymentDuplicate(Guid requestId)

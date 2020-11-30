@@ -30,6 +30,8 @@ namespace PaymentGateway.Application
             }
             catch (Exception e)
             {
+
+                // log error e.Message here, don't return it as a Response object
                 return Response.Failure<T>($"payment was not processed, {e.Message}");
             }
         }

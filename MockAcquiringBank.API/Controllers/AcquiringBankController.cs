@@ -17,19 +17,19 @@ namespace MockAcquiringBank.API.Controllers
         {
             if (int.TryParse(model?.CardNumber?.First().ToString(), out var firstDigit))
             {
-                if (firstDigit == 2)
+                if (firstDigit == 3)
                 {
-                    return StatusCode(StatusCodes.Status500InternalServerError);
+                    return StatusCode(StatusCodes.Status400BadRequest);
                 }
 
-                if (firstDigit == 3 || firstDigit == 4 || firstDigit == 5 || firstDigit == 6)
+                if (firstDigit == 4 || firstDigit == 5 || firstDigit == 6)
                 {
                     return Created("", Guid.NewGuid());
                 }
 
             }
 
-            return StatusCode(StatusCodes.Status400BadRequest);
+            return StatusCode(StatusCodes.Status500InternalServerError);
         }
     }
 

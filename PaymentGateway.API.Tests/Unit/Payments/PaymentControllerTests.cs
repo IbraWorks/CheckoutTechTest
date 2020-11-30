@@ -52,7 +52,6 @@ namespace PaymentGateway.API.Tests.Unit.Payments
 
             var response = await _sut.GetPayment(Guid.NewGuid());
 
-            //response.Result.As<ObjectResult>().StatusCode.Should().Be(200);
             Assert.IsAssignableFrom<OkObjectResult>(response.Result);
         }
 
