@@ -70,7 +70,7 @@ namespace PaymentGateway.Application.Payments.Commands
             await _eventDispatcher.DispatchEvent(new PaymentSentToAcquiringBankEvent(DateTime.UtcNow, request.Id));
 
             //TODO: Extract this to a config file property in appsettings.json
-            var baseUrl = "https://localhost:4001";
+            var baseUrl = "http://localhost:4000";
             var response = await _acquiringBankHttpClient.Post<Guid>($"{baseUrl}/api/AcquiringBank", new
             {
                 request.CardNumber,
