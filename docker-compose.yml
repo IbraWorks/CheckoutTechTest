@@ -6,10 +6,14 @@ services:
     build:
       context: .
       dockerfile: PaymentGateway.API/Dockerfile
+    ports:
+      - 5000:80  
 
   mockacquiringbank.api:
     image: ${DOCKER_REGISTRY-}mockacquiringbankapi
     build:
       context: .
       dockerfile: MockAcquiringBank.API/Dockerfile
+    ports:
+      - 4000:80  
 
