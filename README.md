@@ -14,6 +14,8 @@ I went for an event-sourcing model because I wanted an audit trail of every tran
 
 I chose to use the cqrs pattern and used the MediatR nuget package to help achieve this. In theory we can even eventually separate the commands and queries into different services and scale them independently, settling for an eventually consistent approach.
 
+The application features basic logging as well as documentation with swagger.
+
 I tried to achieve Idempotency to ensure the same payment was not processed twice.
 
 ### Improvements
