@@ -21,7 +21,9 @@ There is no retry policy or circuit breaker pattern implemented when talking to 
 
 The data storage of the event is hosted in memory.
 
-There is no authorization or authentication used in this project so far.
+There are unfortunately no integration tests at this moment in time, only unit tests.
+
+There is no authorization or authentication used in this project.
 
 Although there are Dockerfiles, ssl certs needs to be setup so that the containers can talk over https.
 
