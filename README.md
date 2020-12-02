@@ -10,9 +10,9 @@ The easiest way is to:
 - Alternatively, with both projects running one could hit the PaymentGateway.API via postman / curl etc
 
 ### Design principles
-I went for an event-sourcing model because I wanted an audit trail of every transaction, such that a user would be able to in theory generate a history of all the transactions they had made. 
+I went for an event-sourcing model because I wanted an audit trail of every transaction, such that a user would be able to generate a history of all the transactions they had made. Because the EventStore is append-only, we would  be able to look at the state of the system at a given time by replaying all events up until that time. 
 
-I chose to use the cqrs pattern with and used the MediatR nuget package to help achieve this. In theory we can even eventually separate the commands and queries into different services and scale them independently
+I chose to use the cqrs pattern and used the MediatR nuget package to help achieve this. In theory we can even eventually separate the commands and queries into different services and scale them independently, settling for an eventually consistent approach.
 
 I tried to achieve Idempotency to ensure the same payment was not processed twice.
 
