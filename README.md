@@ -23,4 +23,6 @@ The data storage of the event is hosted in memory.
 
 There is no authorization or authentication used in this project so far.
 
-Finally, although there are Dockerfiles, ssl certs needs to be setup so that the containers can talk over https.
+Although there are Dockerfiles, ssl certs needs to be setup so that the containers can talk over https.
+
+The address to the MockAcquiringBank api is hardcoded, and the results that the api returns is based off of the first digit of the card used
