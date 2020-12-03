@@ -16,7 +16,7 @@ I chose to use the cqrs pattern and used the MediatR nuget package to help achie
 
 The application features basic logging as well as documentation with swagger.
 
-I tried to achieve Idempotency to ensure the same payment was not processed twice.
+I focused on achieving Idempotency to ensure the same payment was not processed twice.
 
 ### Improvements
 There is no retry policy or circuit breaker pattern implemented when talking to the MockAcquiringBank api.
